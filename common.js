@@ -8,7 +8,7 @@
     {h:"conceitos-chave.html", t:"Conceitos-chave"},
     {h:"noticias.html", t:"Notícias"},
     {h:"eventos.html", t:"Eventos"},
-    {h:BIB, t:"Vitrine de Produções", cta:true, ext:true}
+    {h:"produtos.html", t:"Nossos Produtos", cta:true}
   ];
   const cur = location.pathname.split("/").pop() || "index.html";
   const nav = `<header class="topbar"><div class="wrap">
