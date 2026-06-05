@@ -27,9 +27,7 @@ if(!n){
     <h2 style="margin-top:18px">Notícia não encontrada</h2><p class="sub">O endereço pode estar incorreto.</p></div></section>`;
 } else {
   document.title = n.titulo + " · GEPAEd";
-  const heroBg = n.capa
-    ? `background-image:url('${n.capa}');background-position:${n.capaPos||'center'}`
-    : `background-image:${cor[n.categoria]||cor.default}`;
+  const heroBg = `background:${cor[n.categoria]||cor.default}`;
   const meta = [n.dataLabel, n.local].filter(Boolean).join(" · ");
   const corpo = (n.corpo||[]).map(p=>`<p>${p}</p>`).join("");
   const embed = n.embedInstagram
@@ -46,6 +44,9 @@ if(!n){
       <div class="meta">${meta}</div>
     </div></section>
     <article class="nbody">
+      ${n.capa ? (n.capaModo==='crop'
+        ? `<div class="ncapa crop" style="background-image:url('${n.capa}');background-position:${n.capaPos||'center'}"></div>`
+        : `<img class="ncapa" src="${n.capa}" alt="${n.titulo}">`) : ''}
       ${corpo}
       ${embed}
       ${links}

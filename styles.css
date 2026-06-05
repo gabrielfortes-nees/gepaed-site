@@ -129,6 +129,8 @@ a{color:inherit}
 .nhero h1{font-size:clamp(28px,4.5vw,44px);font-weight:600;margin:14px 0 6px;max-width:22ch}
 .nhero .meta{opacity:.92;font-size:14px}
 .nbody{max-width:760px;margin:0 auto;padding:40px 24px 10px}
+.ncapa{width:100%;height:auto;border-radius:16px;margin:0 0 26px;display:block;box-shadow:var(--shadow)}
+.ncapa.crop{height:440px;background-size:cover;background-color:var(--navy)}
 .nbody p{font-size:17px;color:var(--ink);margin-bottom:18px;line-height:1.75}
 .nbody .linksrow{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
 .nbody .ig{max-width:540px;margin:18px auto}

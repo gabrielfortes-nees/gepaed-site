@@ -12,7 +12,8 @@ window.GEPAED_NOTICIAS = [
     evento: false,
     titulo: "Recife sediará o SEDiAr 2027",
     capa: "img/sediar_2027.jpg",
-    capaPos: "center 52%",
+    capaModo: "crop",
+    capaPos: "center 62%",
     resumo: "A Dra. Sylvia De Chiaro anunciou que Recife receberá, em 2027, a 7ª edição do SEDiAr.",
     corpo: [
       "No encerramento do V Seminário Argumentação na Escola, a Dra. Sylvia De Chiaro anunciou que Recife receberá, em 2027, a 7ª edição do SEDiAr — Seminário Internacional de Estudos sobre Discurso e Argumentação.",
