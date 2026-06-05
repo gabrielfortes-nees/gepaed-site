@@ -29,11 +29,11 @@ window.GEPAED_NOTICIAS = [
     evento: true,
     titulo: "GEPAEd no V Seminário Argumentação na Escola",
     local: "Universidade Federal Fluminense (UFF)",
-    capa: "",
-    resumo: "Pesquisadores do grupo participaram do V Seminário Argumentação na Escola, na UFF.",
+    capa: "img/vseminario_sae.jpg",
+    resumo: "Encerramos com alegria a nossa participação no V Seminário Argumentação na Escola, no Rio de Janeiro.",
     corpo: [
-      "Pesquisadores do GEPAEd participaram do V Seminário Argumentação na Escola, realizado na Universidade Federal Fluminense (UFF).",
-      "A Dra. Sylvia De Chiaro integrou a mesa-redonda de encerramento, “Desafios e possibilidades da argumentação nas práticas de linguagens e matemática”."
+      "Hoje, finalizamos nossa participação no V Seminário Argumentação na Escola. Podemos dizer que foi um prazer desfrutar desse espaço para diferentes discussões sobre um assunto que tanto nos interessa: a argumentação! Com mesas-redondas, oficinas, sessões de comunicação oral e painéis interativos, fechamos esse ciclo de apresentações com muita alegria. E, para fechar com chave de ouro, a sorte estava do nosso lado e nossos participantes foram protagonistas nos sorteios dos livros!",
+      "Agradecemos imensamente à organização do @arg.na.escola e nos despedimos do Rio de Janeiro com muito carinho!"
     ],
     embedInstagram: "https://www.instagram.com/p/DZI8TUXD3C9/",
     links: [
