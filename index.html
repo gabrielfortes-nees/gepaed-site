@@ -1,219 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GEPAEd — Grupo de Estudo e Pesquisa em Argumentação na Educação</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#FBF8F1;--navy:#15263F;--navy2:#22406B;--gold:#BE8F2C;--gold-2:#D8B65A;--gold-soft:#EFE0B6;--gold-bg:#F7EFD9;--ink:#26303E;--muted:#6B7480;--line:#EAE3D3;--card:#FFF;--shadow:0 6px 24px rgba(21,38,63,.07);--shadow-h:0 16px 44px rgba(21,38,63,.14);--r:16px}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.6}
-h1,h2,h3,.serif{font-family:Fraunces,Georgia,serif}
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-.eyebrow{color:var(--gold);font-weight:600;font-size:12.5px;letter-spacing:2px;text-transform:uppercase}
-/* nav */
-.topbar{position:sticky;top:0;z-index:60;background:rgba(251,248,241,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand img{height:40px}
-.brand b{font-family:Fraunces;font-weight:700;color:var(--navy);font-size:20px}
-.brand span{display:block;font-size:10.5px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
-.menu{display:flex;gap:4px;align-items:center}
-.menu a{color:var(--navy);text-decoration:none;font-size:14px;padding:9px 13px;border-radius:10px;transition:.18s}
-.menu a:hover{background:var(--gold-bg)}
-.menu a.cta{background:var(--navy);color:#fff;font-weight:600}.menu a.cta:hover{background:var(--navy2)}
-/* hero */
-.hero{position:relative;overflow:hidden;padding:84px 0 64px}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(820px 420px at 82% -8%,rgba(216,182,90,.22),transparent 62%)}
-.hero .wrap{position:relative}
-.hero h1{font-size:clamp(38px,6vw,68px);font-weight:600;color:var(--navy);letter-spacing:-.6px;line-height:1.03;max-width:14ch;margin:16px 0}
-.hero p{font-size:19px;color:var(--muted);max-width:600px}
-.hero .ctas{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:999px;transition:.2s}
-.btn.p{background:var(--navy);color:#fff}.btn.p:hover{background:var(--gold);color:var(--navy)}
-.btn.s{background:transparent;color:var(--navy);border:1.5px solid var(--line)}.btn.s:hover{border-color:var(--gold-2);background:var(--card)}
-/* carousel */
-.car{position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:var(--navy)}
-.car .track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1)}
-.slide{min-width:100%;height:380px;position:relative;display:flex;align-items:flex-end;padding:34px;color:#fff}
-.slide .ph{position:absolute;inset:0;z-index:0}
-.slide .cap{position:relative;z-index:1}
-.slide .cap small{display:block;color:var(--gold-2);font-weight:600;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
-.slide .cap b{font-family:Fraunces;font-size:26px;font-weight:600;display:block;max-width:22ch}
-.slide .cap em{font-style:normal;opacity:.85;font-size:14px}
-.car .nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:var(--navy);font-size:22px;cursor:pointer;z-index:2;display:grid;place-items:center;transition:.18s}
-.car .nav:hover{background:var(--gold-2)}.car .prev{left:18px}.car .next{right:18px}
-.car .dots{position:absolute;bottom:18px;right:24px;display:flex;gap:7px;z-index:2}
-.car .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.45);border:0;cursor:pointer}
-.car .dot.on{background:var(--gold-2);width:24px;border-radius:5px}
-.ph-note{text-align:center;font-size:12px;color:var(--muted);margin-top:10px;font-style:italic}
-/* bands */
-.band{padding:64px 0}.band.alt{background:var(--card);border-block:1px solid var(--line)}
-.band h2{font-size:30px;font-weight:600;color:var(--navy);text-align:center}
-.band .sub{text-align:center;color:var(--muted);margin:8px auto 36px;max-width:620px}
-/* stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.stat{text-align:center;padding:10px}
-.stat b{font-family:Fraunces;font-size:44px;font-weight:700;color:var(--gold);display:block;line-height:1}
-.stat span{color:var(--muted);font-size:14px}
-/* grids */
-.grid{display:grid;gap:18px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
-.card{background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:.2s}
-.band.alt .card{background:var(--bg)}
-.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-h);border-color:var(--gold-2)}
-.card .ic{width:46px;height:46px;border-radius:12px;background:var(--gold-bg);color:var(--gold);display:grid;place-items:center;margin-bottom:14px;font-size:22px}
-.card h3{color:var(--navy);font-size:18px;margin-bottom:6px}.card p{color:var(--muted);font-size:14px}
-.card.link{cursor:pointer;text-decoration:none;display:block}
-/* pub mini */
-.pub{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;display:flex;flex-direction:column;transition:.2s}
-.band.alt .pub{background:var(--bg)}
-.pub:hover{box-shadow:var(--shadow-h);border-color:var(--gold-soft);transform:translateY(-3px)}
-.pub .top{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px}
-.pub .q{font-weight:700;color:var(--navy)}
-.pub h4{font-family:Inter;font-size:14.5px;color:var(--navy);font-weight:600;line-height:1.35;margin-bottom:8px}
-.pub .au{font-size:12.5px;color:var(--muted);margin-top:auto}
-.center{text-align:center;margin-top:30px}
-/* chips conceitos */
-.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.kchip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:12px 22px;color:var(--navy);font-weight:600;font-size:15px}
-.band.alt .kchip{background:var(--bg)}
-/* faça parte */
-.join{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:24px;padding:54px;text-align:center}
-.join h2{color:#fff}.join p{color:rgba(255,255,255,.8);max-width:540px;margin:10px auto 26px}
-.join .btn.p{background:var(--gold-2);color:var(--navy)}.join .btn.p:hover{background:#fff}
-/* footer */
-footer{border-top:1px solid var(--line);padding:40px 0;margin-top:0}
-footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-footer img{height:64px}footer .muted{color:var(--muted);font-size:13px;text-align:right}
-.tag-ph{display:inline-block;background:var(--gold-bg);color:#8a6a17;font-size:10px;font-weight:700;letter-spacing:.5px;border-radius:5px;padding:2px 7px;vertical-align:middle;text-transform:uppercase}
-@media(max-width:860px){.menu a:not(.cta){display:none}.g4,.g3,.stats{grid-template-columns:repeat(2,1fr)}.g2{grid-template-columns:1fr}.slide{height:300px}}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="topbar"><div class="wrap">
-  <a class="brand" href="#top"><img src="img/logo_simbolo.png" alt="GEPAEd"><span><b>GEPAEd</b><span>Argumentação na Educação</span></span></a>
-  <nav class="menu">
-    <a href="#quem">Quem somos</a><a href="#pesquisa">Pesquisa</a>
-    <a href="#conceitos">Conceitos-chave</a><a href="#eventos">Eventos</a>
-    <a href="https://gabrielfortes-nees.github.io/biblioteca/" target="_blank" class="cta">Biblioteca</a>
-  </nav>
-</div></header>
-<a id="top"></a>
+<div id="site-nav"></div>
 
-<section class="hero"><div class="wrap">
+<section class="band" style="padding:40px 0 14px"><div class="wrap">
   <span class="eyebrow">Grupo de Estudo e Pesquisa em Argumentação na Educação</span>
-  <h1>A argumentação como caminho para uma educação crítica</h1>
-  <p>Pesquisa, ensino e extensão sobre o papel da argumentação na construção do conhecimento e na formação de professores. <span class="tag-ph">texto a validar</span></p>
-  <div class="ctas">
-    <a class="btn p" href="https://gabrielfortes-nees.github.io/biblioteca/" target="_blank">Explorar a biblioteca →</a>
-    <a class="btn s" href="#quem">Conheça o grupo</a>
-  </div>
+  <h2 style="font-size:clamp(28px,4.4vw,44px);margin-top:10px;max-width:20ch;line-height:1.08">A argumentação como caminho para uma educação crítica <span class="tag-ph">a validar</span></h2>
 </div></section>
 
+<!-- CARROSSEL: fotos + notícias -->
 <section class="band" style="padding-top:6px"><div class="wrap">
-  <div class="car" id="car">
-    <div class="track" id="track">
-      <div class="slide"><div class="ph" style="background:linear-gradient(135deg,#22406B,#15263F)"></div><div class="cap"><small>Evento</small><b>Seminário Internacional de Argumentação na Escola</b><em>edições do grupo</em></div></div>
-      <div class="slide"><div class="ph" style="background:linear-gradient(135deg,#BE8F2C,#8a6a17)"></div><div class="cap"><small>Evento</small><b>Congresso Nacional de Argumentação na Escola</b><em>encontros e mesas</em></div></div>
-      <div class="slide"><div class="ph" style="background:linear-gradient(135deg,#2E5A4F,#15263F)"></div><div class="cap"><small>Extensão</small><b>Oficinas de formação docente em escolas parceiras</b><em>argumentação em sala de aula</em></div></div>
-    </div>
-    <button class="nav prev" onclick="go(-1)">‹</button><button class="nav next" onclick="go(1)">›</button>
+  <div class="car" id="car"><div class="track" id="track">
+    <div class="slide"><div class="ph" style="background:linear-gradient(135deg,#22406B,#15263F)"></div>
+      <div class="cap"><small>Evento</small><b>Seminário Internacional de Argumentação na Escola</b><em>edições organizadas pelo grupo</em></div></div>
+    <div class="slide"><div class="ph" style="background:linear-gradient(135deg,#BE8F2C,#8a6a17)"></div>
+      <div class="cap"><small>Notícia</small><b>Novas publicações do grupo em periódicos</b><em>veja na Biblioteca</em></div></div>
+    <div class="slide"><div class="ph" style="background:linear-gradient(135deg,#2E5A4F,#15263F)"></div>
+      <div class="cap"><small>Extensão</small><b>Oficinas de argumentação em escolas parceiras</b><em>formação docente em ação</em></div></div>
+    <div class="slide"><div class="ph" style="background:linear-gradient(135deg,#4A3B6B,#15263F)"></div>
+      <div class="cap"><small>Evento</small><b>Congresso Nacional de Argumentação na Escola</b><em>mesas, comunicações e oficinas</em></div></div>
+  </div>
+    <button class="nav prev" onclick="go(-1)" aria-label="anterior">‹</button>
+    <button class="nav next" onclick="go(1)" aria-label="próximo">›</button>
     <div class="dots" id="dots"></div>
   </div>
-  <p class="ph-note">As imagens são marcadores — entram fotos reais dos eventos do grupo.</p>
+  <p class="ph-note">As imagens são marcadores — entram fotos reais dos eventos e notícias do grupo.</p>
 </div></section>
 
+<!-- INFORMAÇÕES DO GRUPO -->
 <section class="band alt"><div class="wrap">
-  <h2>O grupo em números</h2>
-  <div class="stats" id="stats"></div>
-</div></section>
-
-<section class="band" id="quem"><div class="wrap">
-  <h2>Linhas de pesquisa</h2>
-  <p class="sub">As frentes que orientam a produção do grupo. <span class="tag-ph">rascunho a validar</span></p>
-  <div class="grid g4">
-    <div class="card"><div class="ic">◆</div><h3>Argumentação e conhecimento</h3><p>Como a argumentação constrói e transforma o conhecimento em sala de aula.</p></div>
-    <div class="card"><div class="ic">◆</div><h3>Formação de professores</h3><p>Práticas argumentativas na formação inicial e continuada docente.</p></div>
-    <div class="card"><div class="ic">◆</div><h3>Ensino de Ciências e Matemática</h3><p>Argumentação no ensino de química, física, biologia e matemática.</p></div>
-    <div class="card"><div class="ic">◆</div><h3>Metacognição e pensamento crítico</h3><p>Autorregulação, metacognição e desenvolvimento do pensamento reflexivo.</p></div>
+  <h2>O grupo</h2>
+  <p class="sub">Quem somos, em resumo.</p>
+  <div class="sobre">
+    <div>
+      <p style="color:var(--ink);font-size:16.5px">O GEPAEd reúne pesquisadores e estudantes dedicados ao estudo da <strong>argumentação na educação</strong> — seu papel na construção do conhecimento, no ensino e na formação de professores, articulando pesquisa, ensino e extensão. <span class="tag-ph">texto a validar</span></p>
+      <p style="margin-top:18px"><a class="btn s" href="quem-somos.html">Conheça o grupo →</a></p>
+    </div>
+    <div class="lider">
+      <div class="who"><div class="av">SC</div><div><h3>Dra. Sylvia De Chiaro</h3><span>Líder do grupo · UFPE</span></div></div>
+      <p style="color:var(--muted);font-size:13.5px;margin-top:14px;border-top:1px solid var(--line);padding-top:14px">Grupo certificado no Diretório de Grupos de Pesquisa do CNPq.</p>
+    </div>
   </div>
 </div></section>
 
-<section class="band alt" id="pesquisa"><div class="wrap">
-  <h2>Últimas publicações</h2>
-  <p class="sub">Da biblioteca do grupo — os trabalhos mais recentes.</p>
-  <div class="grid g4" id="pubs"></div>
-  <div class="center"><a class="btn p" href="https://gabrielfortes-nees.github.io/biblioteca/" target="_blank">Ver a biblioteca completa →</a></div>
-</div></section>
-
+<!-- CONTATO -->
 <section class="band"><div class="wrap">
-  <h2>Frentes de atuação</h2>
-  <p class="sub">O grupo articula pesquisa, ensino, extensão e formação.</p>
-  <div class="grid g4">
-    <div class="card"><div class="ic">⌕</div><h3>Pesquisa</h3><p>Projetos, teses e dissertações sobre argumentação na educação.</p></div>
-    <div class="card"><div class="ic">⇲</div><h3>Extensão</h3><p>Ações com escolas, redes e comunidade.</p></div>
-    <div class="card"><div class="ic">✎</div><h3>Práticas de ensino</h3><p>Metodologias argumentativas aplicadas em sala de aula.</p></div>
-    <div class="card"><div class="ic">★</div><h3>Formação docente</h3><p>Cursos, oficinas e materiais para professores.</p></div>
+  <h2>Contato</h2>
+  <p class="sub">Fale com o GEPAEd.</p>
+  <div class="contato">
+    <a class="cbox" href="mailto:sylvia.chiaro@ufpe.br"><div class="ic">✉</div><b>E-mail</b><span>sylvia.chiaro@ufpe.br</span></a>
+    <a class="cbox" href="tel:+5581999543333"><div class="ic">☎</div><b>Telefone</b><span>(81) 99954-3333</span></a>
+    <div class="cbox"><div class="ic">🖶</div><b>Fax</b><span>(81) 2126-8323</span></div>
+    <a class="cbox" href="https://instagram.com/gepaed_" target="_blank" rel="noopener"><div class="ic">◎</div><b>Instagram</b><span>@gepaed_</span></a>
   </div>
 </div></section>
 
-<section class="band alt" id="conceitos"><div class="wrap">
-  <h2>Conceitos-chave</h2>
-  <p class="sub">O vocabulário do campo — verbetes que o grupo desenvolve e mobiliza. <span class="tag-ph">a expandir</span></p>
-  <div class="chips">
-    <span class="kchip">Argumentação</span><span class="kchip">Debatibilidade</span>
-    <span class="kchip">Mediação argumentativa</span><span class="kchip">Pensamento crítico-reflexivo</span>
-    <span class="kchip">Metacognição</span><span class="kchip">Aprendizagem significativa</span>
-  </div>
-</div></section>
-
-<section class="band" id="eventos"><div class="wrap">
-  <h2>Eventos e novidades</h2>
-  <p class="sub">Agenda e divulgação do grupo. <span class="tag-ph">conteúdo a inserir</span></p>
-  <div class="grid g3">
-    <div class="card"><div class="ic">▦</div><h3>Próximos eventos</h3><p>Seminários, defesas e encontros — em breve.</p></div>
-    <div class="card"><div class="ic">✦</div><h3>Notícias</h3><p>Publicações, premiações e novidades do grupo.</p></div>
-    <div class="card"><div class="ic">⊞</div><h3>Subgrupos (SGs)</h3><p>Os subgrupos de trabalho e suas frentes.</p></div>
-  </div>
-</div></section>
-
-<section class="band alt"><div class="wrap">
-  <div class="join">
-    <h2>Faça parte do GEPAEd</h2>
-    <p>Estudantes e pesquisadores interessados em argumentação na educação são bem-vindos.</p>
-    <a class="btn p" href="#contato">Entre em contato</a>
-  </div>
-</div></section>
-
-<footer id="contato"><div class="wrap">
-  <img src="img/logo_full.png" alt="GEPAEd — Grupo de Estudo e Pesquisa em Argumentação na Educação">
-  <div class="muted">contato@gepaed.org <span class="tag-ph">a definir</span><br>UFPE · UFAL &nbsp;|&nbsp; Argumentação na Educação</div>
-</div></footer>
-
-<script src="data.js"></script>
+<div id="site-footer"></div>
+<script src="common.js"></script>
 <script>
-const A=window.GEPAED_ARTIGOS||[],M=window.GEPAED_META||{};
-const arr=x=>x==null?[]:Array.isArray(x)?x:[x];
-// stats
-const anos=M.ano_max-M.ano_min;
-document.getElementById('stats').innerHTML=[
- [M.n_pesquisadores,'pesquisadores'],['28','estudantes'],[M.n_artigos,'publicações'],[anos+'+','anos de produção']
-].map(s=>`<div class="stat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('');
-// ultimas publicacoes
-document.getElementById('pubs').innerHTML=A.slice().sort((a,b)=>b.ano-a.ano).slice(0,4).map(a=>{
- const au=arr(a.autores); return `<a class="pub" href="${a.link||'#'}" target="_blank">
-  <div class="top"><span>${a.ano}</span><span class="q">${a.qualis||''}</span></div>
-  <h4>${a.titulo}</h4><div class="au">${au.slice(0,2).join(' · ')}${au.length>2?' et al.':''}</div></a>`;}).join('');
-// carrossel
 let cur=0;const track=document.getElementById('track'),n=track.children.length,dots=document.getElementById('dots');
-for(let i=0;i<n;i++){const d=document.createElement('button');d.className='dot'+(i?'':' on');d.onclick=()=>set(i);dots.appendChild(d)}
-function set(i){cur=(i+n)%n;track.style.transform=`translateX(-${cur*100}%)`;[...dots.children].forEach((d,j)=>d.classList.toggle('on',j===cur))}
-function go(d){set(cur+d)}
-let timer=setInterval(()=>go(1),5000);
-document.getElementById('car').addEventListener('mouseenter',()=>clearInterval(timer));
-document.getElementById('car').addEventListener('mouseleave',()=>timer=setInterval(()=>go(1),5000));
+for(let i=0;i<n;i++){const d=document.createElement('button');d.className='dot'+(i?'':' on');d.onclick=()=>set(i);dots.appendChild(d);}
+function set(i){cur=(i+n)%n;track.style.transform=`translateX(-${cur*100}%)`;[...dots.children].forEach((d,j)=>d.classList.toggle('on',j===cur));}
+function go(d){set(cur+d);}
+let t=setInterval(()=>go(1),5000);
+const c=document.getElementById('car');
+c.addEventListener('mouseenter',()=>clearInterval(t));
+c.addEventListener('mouseleave',()=>t=setInterval(()=>go(1),5000));
 </script>
 </body>
 </html>
