@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notícias · GEPAEd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="site-nav"></div>
+
+<section class="phead"><div class="wrap">
+  <div class="crumb"><a href="index.html">Início</a> › Notícias</div>
+  <h1>Notícias</h1>
+  <p>Participações em eventos, lançamentos, publicações e novidades do grupo.</p>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <div class="newsgrid" id="lista"></div>
+</div></section>
+
+<div id="site-footer"></div>
+<script src="noticias.js"></script>
+<script src="common.js"></script>
+<script>
+const cor=window.GEPAED_CAT_COR||{};
+const cap=n=>n.capa
+  ? `background-image:url('${n.capa}');background-position:${n.capaPos||'center'};background-size:cover`
+  : `background:${cor[n.categoria]||cor.default}`;
+document.getElementById("lista").innerHTML=(window.GEPAED_NOTICIAS||[]).map(n=>`
+  <a class="newscard" href="noticia.html?id=${n.id}">
+    <div class="img" style="${cap(n)}"></div>
+    <div class="body">
+      <span class="catbadge">${n.categoria||'Notícia'}</span>
+      <div class="date">${n.dataLabel||''}</div>
+      <h3>${n.titulo}</h3>
+      <p>${n.resumo||''}</p>
+      <div class="links"><span style="color:var(--gold);font-weight:600;font-size:13px">Ler notícia →</span></div>
+    </div>
+  </a>`).join("");
+</script>
+</body>
+</html>

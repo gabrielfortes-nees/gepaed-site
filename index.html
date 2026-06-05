@@ -17,16 +17,7 @@
 
 <!-- CARROSSEL: fotos + notícias -->
 <section class="band" style="padding-top:6px"><div class="wrap">
-  <div class="car" id="car"><div class="track" id="track">
-    <div class="slide"><div class="ph" style="background:linear-gradient(to top,rgba(21,38,63,.92),rgba(21,38,63,.25)),url('img/sediar_2027.jpg') center 52%/cover"></div>
-      <div class="cap"><small>Notícia · 2027</small><b>Recife sediará o SEDiAr 2027</b><em>Anunciado pela Dra. Sylvia De Chiaro no V Seminário Argumentação na Escola</em></div></div>
-    <div class="slide"><div class="ph" style="background:linear-gradient(135deg,#22406B,#15263F)"></div>
-      <div class="cap"><small>Notícia · Junho de 2026</small><b>GEPAEd no V Seminário Argumentação na Escola</b><em>Mesa-redonda de encerramento na UFF</em></div></div>
-    <div class="slide"><div class="ph" style="background:linear-gradient(135deg,#2E5A4F,#15263F)"></div>
-      <div class="cap"><small>Extensão</small><b>Oficinas de argumentação em escolas parceiras</b><em>formação docente em ação</em></div></div>
-    <div class="slide"><div class="ph" style="background:linear-gradient(135deg,#4A3B6B,#15263F)"></div>
-      <div class="cap"><small>Evento</small><b>Congresso Nacional de Argumentação na Escola</b><em>mesas, comunicações e oficinas</em></div></div>
-  </div>
+  <div class="car" id="car"><div class="track" id="track"></div>
     <button class="nav prev" onclick="go(-1)" aria-label="anterior">‹</button>
     <button class="nav next" onclick="go(1)" aria-label="próximo">›</button>
     <div class="dots" id="dots"></div>
@@ -63,17 +54,27 @@
 </div></section>
 
 <div id="site-footer"></div>
+<script src="noticias.js"></script>
 <script src="common.js"></script>
 <script>
-let cur=0;const track=document.getElementById('track'),n=track.children.length,dots=document.getElementById('dots');
-for(let i=0;i<n;i++){const d=document.createElement('button');d.className='dot'+(i?'':' on');d.onclick=()=>set(i);dots.appendChild(d);}
+const cor=window.GEPAED_CAT_COR||{};
+const track=document.getElementById('track');
+track.innerHTML=(window.GEPAED_NOTICIAS||[]).map(nt=>{
+  const bg=nt.capa
+    ? `linear-gradient(to top,rgba(21,38,63,.92),rgba(21,38,63,.25)),url('${nt.capa}') ${nt.capaPos||'center'}/cover`
+    : (cor[nt.categoria]||cor.default);
+  return `<a class="slide" href="noticia.html?id=${nt.id}">
+    <div class="ph" style="background:${bg}"></div>
+    <div class="cap"><small>${nt.categoria||'Notícia'} · ${nt.dataLabel||''}</small><b>${nt.titulo}</b><em>${nt.resumo||''}</em></div></a>`;
+}).join("");
+const n=track.children.length,dots=document.getElementById('dots');let cur=0;
+for(let i=0;i<n;i++){const d=document.createElement('button');d.className='dot'+(i?'':' on');d.onclick=(e)=>{e.preventDefault();set(i);};dots.appendChild(d);}
 function set(i){cur=(i+n)%n;track.style.transform=`translateX(-${cur*100}%)`;[...dots.children].forEach((d,j)=>d.classList.toggle('on',j===cur));}
 function go(d){set(cur+d);}
-let t=setInterval(()=>go(1),5000);
+let t=n>1?setInterval(()=>go(1),5000):null;
 const c=document.getElementById('car');
 c.addEventListener('mouseenter',()=>clearInterval(t));
-c.addEventListener('mouseleave',()=>t=setInterval(()=>go(1),5000));
-// swipe por toque (mobile)
+c.addEventListener('mouseleave',()=>{if(n>1)t=setInterval(()=>go(1),5000);});
 let sx=0;
 track.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
 track.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(dx<0?1:-1);},{passive:true});

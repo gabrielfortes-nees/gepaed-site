@@ -54,7 +54,7 @@ a{color:inherit}
 /* carousel */
 .car{position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:var(--navy)}
 .car .track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1)}
-.slide{min-width:100%;height:420px;position:relative;display:flex;align-items:flex-end;padding:38px;color:#fff}
+.slide{min-width:100%;height:420px;position:relative;display:flex;align-items:flex-end;padding:38px;color:#fff;text-decoration:none}
 .slide .ph{position:absolute;inset:0;z-index:0}
 .slide .cap{position:relative;z-index:1;max-width:60ch}
 .slide .cap small{display:block;color:var(--gold-2);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
@@ -107,7 +107,7 @@ a{color:inherit}
 
 /* notícias */
 .newsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
-.newscard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:.2s;display:flex;flex-direction:column}
+.newscard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:.2s;display:flex;flex-direction:column;text-decoration:none;color:inherit}
 .band.alt .newscard{background:var(--bg)}
 .newscard:hover{box-shadow:var(--shadow-h);border-color:var(--gold-2);transform:translateY(-3px)}
 .newscard .img{height:210px;background-size:cover;background-position:center;background-color:var(--navy)}
@@ -118,6 +118,21 @@ a{color:inherit}
 .newscard .links{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
 .newscard .links a{font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;border:1px solid var(--line);border-radius:9px;padding:7px 13px;transition:.18s}
 .newscard .links a:hover{border-color:var(--gold-2);background:var(--gold-bg)}
+
+/* selo de categoria + página de notícia */
+.catbadge{display:inline-block;background:var(--navy);color:var(--gold-2);font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;border-radius:6px;padding:3px 10px}
+.newscard .body .catbadge{margin-bottom:10px;align-self:flex-start}
+.nhero{position:relative;min-height:340px;display:flex;align-items:flex-end;background-size:cover;background-position:center;background-color:var(--navy);color:#fff}
+.nhero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(21,38,63,.92),rgba(21,38,63,.3))}
+.nhero .inner{position:relative;z-index:1;padding:40px 24px;max-width:1180px;margin:0 auto;width:100%}
+.nhero .catbadge{background:var(--gold-2);color:var(--navy)}
+.nhero h1{font-size:clamp(28px,4.5vw,44px);font-weight:600;margin:14px 0 6px;max-width:22ch}
+.nhero .meta{opacity:.92;font-size:14px}
+.nbody{max-width:760px;margin:0 auto;padding:40px 24px 10px}
+.nbody p{font-size:17px;color:var(--ink);margin-bottom:18px;line-height:1.75}
+.nbody .linksrow{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
+.nbody .ig{max-width:540px;margin:18px auto}
+.backlink{display:inline-block;color:var(--gold);font-weight:600;text-decoration:none;font-size:14px}
 
 /* footer */
 footer{border-top:1px solid var(--line);padding:38px 0;margin-top:8px;background:var(--card)}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notícia · GEPAEd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="site-nav"></div>
+<main id="art"></main>
+<div id="site-footer"></div>
+
+<script src="noticias.js"></script>
+<script src="common.js"></script>
+<script>
+const params = new URLSearchParams(location.search);
+const id = params.get("id");
+const n = (window.GEPAED_NOTICIAS||[]).find(x=>x.id===id);
+const cor = (window.GEPAED_CAT_COR||{});
+const el = document.getElementById("art");
+
+if(!n){
+  document.title = "Notícia não encontrada · GEPAEd";
+  el.innerHTML = `<section class="band"><div class="wrap"><a class="backlink" href="noticias.html">← Todas as notícias</a>
+    <h2 style="margin-top:18px">Notícia não encontrada</h2><p class="sub">O endereço pode estar incorreto.</p></div></section>`;
+} else {
+  document.title = n.titulo + " · GEPAEd";
+  const heroBg = n.capa
+    ? `background-image:url('${n.capa}');background-position:${n.capaPos||'center'}`
+    : `background-image:${cor[n.categoria]||cor.default}`;
+  const meta = [n.dataLabel, n.local].filter(Boolean).join(" · ");
+  const corpo = (n.corpo||[]).map(p=>`<p>${p}</p>`).join("");
+  const embed = n.embedInstagram
+    ? `<div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="${n.embedInstagram}?utm_source=ig_embed" data-instgrm-version="14" style="max-width:540px;width:100%;margin:0 auto;border:0"></blockquote></div>`
+    : "";
+  const links = (n.links&&n.links.length)
+    ? `<div class="linksrow">${n.links.map(l=>`<a class="btn s" href="${l.u}" target="_blank" rel="noopener">${l.t} ↗</a>`).join("")}</div>`
+    : "";
+  el.innerHTML = `
+    <section class="nhero" style="${heroBg}"><div class="inner">
+      <a class="backlink" style="color:var(--gold-2)" href="noticias.html">← Notícias</a>
+      <div style="margin-top:14px"><span class="catbadge">${n.categoria||'Notícia'}</span></div>
+      <h1>${n.titulo}</h1>
+      <div class="meta">${meta}</div>
+    </div></section>
+    <article class="nbody">
+      ${corpo}
+      ${embed}
+      ${links}
+      <p style="margin-top:30px"><a class="backlink" href="noticias.html">← Voltar para Notícias</a></p>
+    </article>`;
+  if(n.embedInstagram){
+    const s=document.createElement("script");s.async=true;s.src="https://www.instagram.com/embed.js";document.body.appendChild(s);
+  }
+}
+</script>
+</body>
+</html>

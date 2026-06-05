@@ -2,11 +2,11 @@
 (function(){
   const BIB = "https://gabrielfortes-nees.github.io/biblioteca/";
   const links = [
-    {h:"index.html", t:"Início"},
     {h:"quem-somos.html", t:"Quem somos"},
     {h:"equipe.html", t:"Equipe"},
     {h:"pesquisa.html", t:"Pesquisa"},
     {h:"conceitos-chave.html", t:"Conceitos-chave"},
+    {h:"noticias.html", t:"Notícias"},
     {h:"eventos.html", t:"Eventos"},
     {h:BIB, t:"Vitrine de Produções", cta:true, ext:true}
   ];

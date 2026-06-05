@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eventos e notícias · GEPAEd</title>
+<title>Eventos · GEPAEd</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -12,65 +12,43 @@
 
 <section class="phead"><div class="wrap">
   <div class="crumb"><a href="index.html">Início</a> › Eventos</div>
-  <h1>Eventos e notícias</h1>
-  <p>Agenda do grupo e novidades. <span class="tag-ph">conteúdo a inserir</span></p>
+  <h1>Eventos</h1>
+  <p>Agenda do grupo e participações em eventos. Novidades em geral ficam em <a href="noticias.html" style="color:var(--gold);font-weight:600">Notícias</a>.</p>
 </div></section>
 
 <section class="band"><div class="wrap">
   <h2>Próximos eventos</h2>
   <p class="sub">Seminários, defesas e encontros.</p>
-  <div class="grid g3">
-    <div class="card"><div class="ic">▦</div><h3>Em breve</h3><p>Os próximos eventos do grupo aparecerão aqui.</p></div>
-  </div>
+  <div class="grid g3" id="agenda"></div>
 </div></section>
 
 <section class="band alt"><div class="wrap">
-  <h2>Eventos realizados</h2>
-  <p class="sub">Histórico de eventos organizados pelo grupo. <span class="tag-ph">a confirmar</span></p>
-  <div class="grid g3">
-    <div class="card"><div class="ic">◷</div><h3>Seminário Internacional de Argumentação na Escola</h3><p>Edições organizadas pelo grupo.</p></div>
-    <div class="card"><div class="ic">◷</div><h3>Congresso Nacional de Argumentação na Escola</h3><p>Mesas, comunicações e oficinas.</p></div>
-  </div>
-</div></section>
-
-<section class="band"><div class="wrap">
-  <h2>Notícias</h2>
-  <p class="sub">Novidades e participações do grupo.</p>
-  <div class="newsgrid">
-
-    <article class="newscard">
-      <div class="img" style="background-image:url('img/sediar_2027.jpg');background-position:center 52%"></div>
-      <div class="body">
-        <div class="date">2027 · Recife</div>
-        <h3>Recife sediará o SEDiAr 2027</h3>
-        <p>No encerramento do V Seminário Argumentação na Escola, a Dra. Sylvia De Chiaro anunciou que Recife receberá, em 2027, a 7ª edição do SEDiAr — Seminário Internacional de Estudos sobre Discurso e Argumentação, principal evento acadêmico bienal do Brasil voltado a pesquisadores de linguagem, discurso e argumentação. <span class="tag-ph">texto a validar</span></p>
-        <div class="links"><span style="font-size:12.5px;color:var(--muted)">Mais informações em breve</span></div>
-      </div>
-    </article>
-
-    <article class="newscard">
-      <div class="img" style="background:linear-gradient(135deg,#22406B,#15263F);display:grid;place-items:center;color:var(--gold-2);font-family:Fraunces;font-weight:700;font-size:24px;text-align:center;padding:18px;line-height:1.2">V Seminário<br>Argumentação na Escola</div>
-      <div class="body">
-        <div class="date">Junho de 2026 · UFF</div>
-        <h3>GEPAEd no V Seminário Argumentação na Escola</h3>
-        <p>Pesquisadores do grupo participaram do V Seminário Argumentação na Escola, na Universidade Federal Fluminense (UFF), com a Dra. Sylvia De Chiaro na mesa-redonda de encerramento. <span class="tag-ph">texto a validar</span></p>
-        <div class="links">
-          <a href="https://www.instagram.com/p/DZI8TUXD3C9/" target="_blank" rel="noopener">Ver no Instagram ↗</a>
-          <a href="https://www.instagram.com/p/DZGjZOkERLI/" target="_blank" rel="noopener">Mais fotos ↗</a>
-        </div>
-      </div>
-    </article>
-
-  </div>
-
-  <div style="max-width:560px;margin:36px auto 0;text-align:center">
-    <h3 style="color:var(--navy);font-size:18px;margin-bottom:16px">Acompanhe no Instagram</h3>
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZI8TUXD3C9/?utm_source=ig_embed" data-instgrm-version="14" style="max-width:540px;width:100%;margin:0 auto;border:0"></blockquote>
-  </div>
+  <h2>Participações e eventos realizados</h2>
+  <p class="sub">Eventos de que o grupo participou ou organizou.</p>
+  <div class="newsgrid" id="realizados"></div>
 </div></section>
 
 <div id="site-footer"></div>
+<script src="noticias.js"></script>
 <script src="common.js"></script>
-<script async src="https://www.instagram.com/embed.js"></script>
+<script>
+const cor=window.GEPAED_CAT_COR||{};
+// próximos eventos (agenda)
+const ag=window.GEPAED_AGENDA||[];
+document.getElementById('agenda').innerHTML = ag.length
+  ? ag.map(e=>`<a class="card link" href="${e.link||'#'}"><div class="ic">▦</div><h3>${e.titulo}</h3>
+      <p><strong style="color:var(--navy)">${e.dataLabel}</strong><br>${e.descricao||''}</p></a>`).join("")
+  : `<div class="card"><div class="ic">▦</div><h3>Em breve</h3><p>Os próximos eventos aparecerão aqui.</p></div>`;
+// eventos realizados (notícias marcadas como evento)
+const cap=n=>n.capa?`background-image:url('${n.capa}');background-position:${n.capaPos||'center'};background-size:cover`:`background:${cor[n.categoria]||cor.default}`;
+const evs=(window.GEPAED_NOTICIAS||[]).filter(n=>n.evento);
+document.getElementById('realizados').innerHTML = evs.length
+  ? evs.map(n=>`<a class="newscard" href="noticia.html?id=${n.id}">
+      <div class="img" style="${cap(n)}"></div>
+      <div class="body"><span class="catbadge">${n.categoria}</span><div class="date">${n.dataLabel||''}</div>
+        <h3>${n.titulo}</h3><p>${n.resumo||''}</p>
+        <div class="links"><span style="color:var(--gold);font-weight:600;font-size:13px">Ler notícia →</span></div></div></a>`).join("")
+  : `<div class="card"><p style="color:var(--muted)">Sem registros ainda.</p></div>`;
+</script>
 </body>
 </html>
