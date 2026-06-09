@@ -1,6 +1,7 @@
 // Navbar + rodapé compartilhados por todas as páginas do site GEPAEd
 (function(){
-  const BIB = "https://gabrielfortes-nees.github.io/biblioteca/";
+  // >>> URL da Vitrine de Produções — ÚNICO lugar para trocar (ex.: ao migrar de domínio) <<<
+  const VITRINE = "https://gabrielfortes-nees.github.io/biblioteca/";
   const links = [
     {h:"quem-somos.html", t:"Quem somos"},
     {h:"equipe.html", t:"Equipe"},
@@ -35,4 +36,6 @@
     });
     m.addEventListener("click", e=>{ if(e.target.tagName==="A") m.classList.remove("open"); });
   }
+  // preenche todos os links da Vitrine a partir da constante única acima
+  document.querySelectorAll("a.js-vitrine").forEach(a=>{ a.setAttribute("href", VITRINE); });
 })();
