@@ -87,7 +87,7 @@ a{color:inherit}
 .sobre .lider .who{display:flex;align-items:center;gap:16px}
 .sobre .lider .av{width:60px;height:60px;border-radius:50%;background:var(--gold-bg);color:var(--gold);display:grid;place-items:center;font-family:Fraunces;font-weight:700;font-size:24px}
 .sobre .lider h3{color:var(--navy);font-size:18px}.sobre .lider span{color:var(--muted);font-size:13px}
-.contato{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.contato{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:16px}
 .cbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;text-decoration:none;display:block;transition:.2s}
 .cbox:hover{border-color:var(--gold-2);transform:translateY(-3px);box-shadow:var(--shadow-h)}
 .cbox .ic{font-size:22px;margin-bottom:8px}.cbox b{display:block;color:var(--navy);font-size:14px}.cbox span{color:var(--muted);font-size:13px;word-break:break-word}

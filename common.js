@@ -21,7 +21,7 @@
   const foot = `<footer><div class="wrap">
     <img src="img/logo_full.png" alt="GEPAEd — Grupo de Estudo e Pesquisa em Argumentação na Educação">
     <div class="fr">Líder: <strong>Dra. Sylvia De Chiaro</strong> · UFPE<br>
-      <a href="mailto:sylvia.chiaro@ufpe.br">sylvia.chiaro@ufpe.br</a> ·
+      <a href="mailto:gepaed.arg@gmail.com">gepaed.arg@gmail.com</a> ·
       <a href="https://instagram.com/gepaed_" target="_blank" rel="noopener">@gepaed_</a> ·
       (81) 99954-3333</div>
   </div></footer>`;
